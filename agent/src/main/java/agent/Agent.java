@@ -72,9 +72,12 @@ public class Agent {
                             String clsOrgName = clsPackageName + ".Original" + cc.getSimpleName();
                             Class orgClass = cp.getAndRename(clsFullName, clsOrgName).toClass();
                             CtClass orgCc = cp.get(orgClass.getName());
+                            orgCc.writeFile();
 
                             // Set super class of variant class
                             ccVar.setSuperclass(orgCc);
+                            // ccVar.toClass();
+                            ccVar.writeFile();
 
                             /* 
                              * Override constructions and methods
@@ -95,6 +98,8 @@ public class Agent {
                             e1.printStackTrace();
                         } catch (javassist.CannotCompileException e2) {
                             e2.printStackTrace();
+                        } catch (java.io.IOException eio) {
+                            eio.printStackTrace();
                         }
                     } else {
                         // Do nothing
