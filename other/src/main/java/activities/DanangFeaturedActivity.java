@@ -19,7 +19,7 @@ public class DanangFeaturedActivity extends FeaturedActivity {
 
     public int render() {
         // Test inheritance
-        super.render();
+        // super.render();
 
         // Test function work
         System.out.println("Hello Da Nang !");
