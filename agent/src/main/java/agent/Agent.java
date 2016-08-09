@@ -124,6 +124,7 @@ public class Agent {
 
 
     public static boolean isOriginalClass(CtClass cc) throws java.lang.ClassNotFoundException{
+        // TODO: Need to have a better way to casting Annotation and get Annotation value
         Object[] anns = cc.getAnnotations();
         if (anns != null && anns.length > 0) {
             for (Object ann:anns) {
@@ -134,7 +135,6 @@ public class Agent {
             }
         }
         return false;
-        // return "activities.FeaturedActivity".equals(cc.getName());
     }
 }
 
