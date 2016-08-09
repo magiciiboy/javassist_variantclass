@@ -124,8 +124,17 @@ public class Agent {
 
 
     public static boolean isOriginalClass(CtClass cc) throws java.lang.ClassNotFoundException{
-        Object[] all = cc.getAnnotations();
-        return "activities.FeaturedActivity".equals(cc.getName());
+        Object[] anns = cc.getAnnotations();
+        if (anns != null && anns.length > 0) {
+            for (Object ann:anns) {
+                String annName = String.format("%s", ann);
+                if ("@annotations.OriginalClass".equals(annName)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+        // return "activities.FeaturedActivity".equals(cc.getName());
     }
 }
 
